@@ -2,10 +2,9 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Hello React</title>
+    <title>Компоненты в React</title>
 </head>
 <body>
-    <div id="header"></div>
     <div id="container"></div>
      
     <script src="https://unpkg.com/react@15/dist/react.js"></script>
@@ -13,27 +12,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.min.js"></script>
      
     <script type="text/babel">
-        function tick() {
-          ReactDOM.render(
-            <div>
-              <h1>Hello, React!</h1>
-              <h2>Текущее время {new Date().toLocaleTimeString()}.</h2>
-            </div>,
-            document.getElementById("header")
-          );
+        class Hello extends React.Component {
+          render() {
+            return <div>
+                        <p>Имя: {this.props.name}</p>
+                        <p>Возраст: {this.props.age}</p>
+                    </div>;
+          }
         }
-        setInterval(tick, 1000);
+
+        Hello.defaultProps = {name: "Tom", age: 22};
+
         ReactDOM.render(
-            <div>
-                <h2>Список телефонов</h2>
-                <ul>
-                    <li>iPhone 7</li>
-                    <li>Samsung Galaxy A5</li>
-                    <li>HTC U Ultra</li>
-                </ul>
-            </div>,
-            document.getElementById("container"),
-            function(){ console.log("рендеринг элемента React");}
+            <Hello name="Tom" age="33" />,
+            document.getElementById("container")
         )
     </script>
 </body>
