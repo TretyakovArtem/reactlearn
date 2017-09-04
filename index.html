@@ -5,7 +5,7 @@
     <title>Компоненты в React</title>
 </head>
 <body>
-    <div id="container"></div>
+    <div id="header"></div>
      
     <script src="https://unpkg.com/react@15/dist/react.js"></script>
     <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
@@ -13,19 +13,17 @@
      
     <script type="text/babel">
         class Hello extends React.Component {
-          render() {
-            return <div>
-                        <p>Имя: {this.props.name}</p>
-                        <p>Возраст: {this.props.age}</p>
-                    </div>;
-          }
+            constructor(props) {
+                super(props);
+                this.state = {welcome: "Добро пожаловать на сайт!"};
+            }
+            render() {
+                return <h1>{this.state.welcome}</h1>;
+            }
         }
-
-        Hello.defaultProps = {name: "Tom", age: 22};
-
         ReactDOM.render(
-            <Hello name="Tom" age="33" />,
-            document.getElementById("container")
+            <Hello />,
+            document.getElementById("header")
         )
     </script>
 </body>
